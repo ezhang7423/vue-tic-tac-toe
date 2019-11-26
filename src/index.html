@@ -28,10 +28,34 @@
         align-content: center;
         line-height: 140px;
     }
+
+.play {
+    margin-top: 30px;
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size:30px;
+	padding:16px 31px;
+	text-decoration:none;
+}
+.play:hover {
+	background-color:#5cbf2a;
+}
+.play:active {
+	position:relative;
+	top:1px;
+}
+.hide{
+    visibility: hidden;
+}
     @media only screen and (max-width: 600px) {
 .col{
     width: 30vw;
-    height: 18vh;
+    height: 13vh;
     font-size: 30vw;
 }
 }
@@ -56,7 +80,9 @@
             <div class = "col 9"></div>
         </div>
     </div>
+    <div class = 'hide play' onclick="location.reload();">Play again?</div>
 </div>
+
 <script>
     goX = true;
     const board = document.querySelector('.board-container')
@@ -78,26 +104,34 @@
       return squares[a];
     }
   }
-  return null;
+  return 0;
 }
-    function aler(e){
+
+function alertWinner(boardState){
+    if (calculateWinner(boardState)){
+            if (calculateWinner(boardState) == 'X') alert("x is winner")
+            else alert("O is winner")
+            board.removeEventListener('click', update)   
+            document.querySelector('.play').classList.toggle('hide')
+        }
+}
+    function update(e){
         let index = parseInt(e.target.classList.item(1))-1
         if (e.target.innerText == '') {
             if (goX) {
             e.target.innerText = 'X'
             goX = !goX
             boardState[index] = 'X'
-            console.log(calculateWinner(boardState))
         }
         else {
             e.target.innerText = 'O'
             goX = !goX
             boardState[index] = 'O'
-            console.log(calculateWinner(boardState))
+        }
+        alertWinner(boardState)
         }
     }
-    }
-    board.addEventListener('click', (event) => aler(event))
+    board.addEventListener('click', update)
     
 </script>
 </body>
