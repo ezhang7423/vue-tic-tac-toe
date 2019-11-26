@@ -19,14 +19,14 @@
          flex-direction: column;
     }
     .col{
-        width: 50px;
-        height: 50px;
+        width: 20vw;
+        height: 20vh;
         border: 1px solid black;
-        font-size: 50px;
+        font-size: 180px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         text-align: center;
         align-content: center;
-        line-height: 50px;
+        line-height: 140px;
     }
     </style>
 </head>
@@ -53,18 +53,23 @@
 <script>
     goX = true;
     const board = document.querySelector('.board-container')
+    let boardState = ['', '', '', '', '', '', '', '', '']
     function aler(e){
-        //e.target.classList.item(1)
+        let index = parseInt(e.target.classList.item(1))-1
         if (e.target.innerText == '') {
             if (goX) {
             e.target.innerText = 'X'
             goX = !goX
+            boardState[index] = 'X'
+            console.log(boardState)
         }
         else {
             e.target.innerText = 'O'
             goX = !goX
+            boardState[index] = 'O'
+            console.log(boardState)
         }
-        }
+    }
     }
     board.addEventListener('click', (event) => aler(event))
     
