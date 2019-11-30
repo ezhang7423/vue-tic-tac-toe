@@ -159,6 +159,10 @@
                 }
                 alertWinner(boardState)
             }
+            else if (!boardState.includes(undefined)) {
+                board.removeEventListener('click', update)
+                document.querySelector('.play').classList.toggle('hide')
+            }
         }
         board.addEventListener('click', update)
 
