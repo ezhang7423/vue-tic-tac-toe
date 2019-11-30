@@ -1,138 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Basic</title>
     <style>
-    .row{
-        display: flex;
-        flex-direction: row;
-    }
-    .board-wrapper{
-         width: 100vw;
-         height: 100vh;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: column;
-    }
-    .col{
-        width: 10vw;
-        height: 20vh;
-        border: 1px solid black;
-        font-size: 10vw;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        text-align: center;
-        align-content: center;
-        line-height: 140px;
-    }
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
 
-.play {
-    margin-top: 30px;
-	background-color:#44c767;
-	border-radius:28px;
-	border:1px solid #18ab29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-size:30px;
-	padding:16px 31px;
-	text-decoration:none;
-}
-.play:hover {
-	background-color:#5cbf2a;
-}
-.play:active {
-	position:relative;
-	top:1px;
-}
-.hide{
-    visibility: hidden;
-}
-    @media only screen and (max-width: 600px) {
-.col{
-    width: 30vw;
-    height: 13vh;
-    font-size: 30vw;
-}
-}
+        .board-wrapper {
+            margin: auto;
+            height: fit-content;
+            width: fit-content;
+            margin-top: 20vh;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col {
+            width: 8rem;
+            height: 8rem;
+            border: 1px solid black;
+            font-size: 8rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            align-content: center;
+            /* line-height: 140px; */
+        }
+
+        .play {
+            margin-top: 30px;
+            background-color: #44c767;
+            border-radius: 28px;
+            border: 1px solid #18ab29;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+            padding: 16px 31px;
+            text-decoration: none;
+        }
+
+        .play:hover {
+            background-color: #5cbf2a;
+        }
+
+        .play:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .col {
+                width: 5.7rem;
+                height: 5.7rem;
+                font-size: 5.7rem;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class = board-wrapper>
-    <div class = board-container>
-        <div class = "row 1">
-            <div class = "col 1"></div>
-            <div class = "col 2"></div>
-            <div class = "col 3"></div>
+    <div class=board-wrapper>
+        <div class=board-container>
+            <div class="row 1">
+                <div class="col 1"></div>
+                <div class="col 2"></div>
+                <div class="col 3"></div>
+            </div>
+            <div class="row 2">
+                <div class="col 4"></div>
+                <div class="col 5"></div>
+                <div class="col 6"></div>
+            </div>
+            <div class="row 3">
+                <div class="col 7"></div>
+                <div class="col 8"></div>
+                <div class="col 9"></div>
+            </div>
         </div>
-        <div class = "row 2">
-            <div class = "col 4"></div>
-            <div class = "col 5"></div>
-            <div class = "col 6"></div>
-        </div>
-        <div class = "row 3">
-            <div class = "col 7"></div>
-            <div class = "col 8"></div>
-            <div class = "col 9"></div>
-        </div>
+        <div class='hide play' onclick="location.reload();">Play again?</div>
     </div>
-    <div class = 'hide play' onclick="location.reload();">Play again?</div>
-</div>
 
-<script>
-    goX = true;
-    const board = document.querySelector('.board-container')
-    let boardState = ['', '', '', '', '', '', '', '', '']
-    function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return 0;
-}
+    <script>
+        goX = true;
+        const board = document.querySelector('.board-container')
+        let boardState = ['', '', '', '', '', '', '', '', '']
+        function calculateWinner(squares) {
+            const lines = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6],
+            ];
+            for (let i = 0; i < lines.length; i++) {
+                const [a, b, c] = lines[i];
+                if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                    return squares[a];
+                }
+            }
+            return 0;
+        }
 
-function alertWinner(boardState){
-    if (calculateWinner(boardState)){
-            if (calculateWinner(boardState) == 'X') alert("x is winner")
-            else alert("O is winner")
-            board.removeEventListener('click', update)   
-            document.querySelector('.play').classList.toggle('hide')
+        function alertWinner(boardState) {
+            if (calculateWinner(boardState)) {
+                if (calculateWinner(boardState) == 'X') alert("x is winner")
+                else alert("O is winner")
+                board.removeEventListener('click', update)
+                document.querySelector('.play').classList.toggle('hide')
+            }
         }
-}
-    function update(e){
-        let index = parseInt(e.target.classList.item(1))-1
-        if (e.target.innerText == '') {
-            if (goX) {
-            e.target.innerText = 'X'
-            goX = !goX
-            boardState[index] = 'X'
+        function update(e) {
+            let index = parseInt(e.target.classList.item(1)) - 1
+            if (e.target.innerText == '') {
+                if (goX) {
+                    e.target.innerText = 'X'
+                    goX = !goX
+                    boardState[index] = 'X'
+                }
+                else {
+                    e.target.innerText = 'O'
+                    goX = !goX
+                    boardState[index] = 'O'
+                }
+                alertWinner(boardState)
+            }
         }
-        else {
-            e.target.innerText = 'O'
-            goX = !goX
-            boardState[index] = 'O'
-        }
-        alertWinner(boardState)
-        }
-    }
-    board.addEventListener('click', update)
-    
-</script>
+        board.addEventListener('click', update)
+
+    </script>
 </body>
+
 </html>
