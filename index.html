@@ -139,7 +139,9 @@
                 calculateWinner(boardState) == 'X' ? alert("X wins!") : alert("O wins!")
                 board.removeEventListener('click', update)
                 document.querySelector('.play').classList.toggle('hide')
+                return 'fi'
             }
+            return 0
         }
         function update(e) {
             let index = parseInt(e.target.classList.item(1)) - 1
@@ -156,12 +158,16 @@
                     goX = !goX
                     boardState[index] = 'O'
                 }
-                alertWinner(boardState)
+                won = alertWinner(boardState)
+                if (!boardState.includes("")) {
+                    board.removeEventListener('click', update)
+                    if (!won) document.querySelector('.play').classList.toggle('hide')
+                }
+
+
+
             }
-            else if (!boardState.includes(undefined)) {
-                board.removeEventListener('click', update)
-                document.querySelector('.play').classList.toggle('hide')
-            }
+
         }
         board.addEventListener('click', update)
 
