@@ -136,8 +136,7 @@
 
         function alertWinner(boardState) {
             if (calculateWinner(boardState)) {
-                if (calculateWinner(boardState) == 'X') alert("X wins!")
-                else alert("O wins!")
+                calculateWinner(boardState) == 'X' ? alert("X wins!") : alert("O wins!")
                 board.removeEventListener('click', update)
                 document.querySelector('.play').classList.toggle('hide')
             }
