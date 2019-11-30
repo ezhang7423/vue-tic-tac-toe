@@ -70,6 +70,21 @@
 
             }
         }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn .2s ease-out 1 forwards;
+        }
+
+        .is-paused {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -77,19 +92,19 @@
     <div class=board-wrapper>
         <div class=board-container>
             <div class="row 1">
-                <div class="col 1"></div>
-                <div class="col 2"></div>
-                <div class="col 3"></div>
+                <div class="col 1"><span class="fade-in is-paused"></span></div>
+                <div class="col 2"><span class="fade-in is-paused"></span></div>
+                <div class="col 3"> <span class="fade-in is-paused"></span></div>
             </div>
             <div class="row 2">
-                <div class="col 4"></div>
-                <div class="col 5"></div>
-                <div class="col 6"></div>
+                <div class="col 4"> <span class="fade-in is-paused"></span></div>
+                <div class="col 5"> <span class="fade-in is-paused"></span></div>
+                <div class="col 6"> <span class="fade-in is-paused"></span></div>
             </div>
             <div class="row 3">
-                <div class="col 7"></div>
-                <div class="col 8"></div>
-                <div class="col 9"></div>
+                <div class="col 7"> <span class="fade-in is-paused"></span></div>
+                <div class="col 8"> <span class="fade-in is-paused"></span></div>
+                <div class="col 9"> <span class="fade-in is-paused"></span></div>
             </div>
         </div>
         <div class='hide play' onclick="location.reload();">Play again?</div>
@@ -131,12 +146,14 @@
             let index = parseInt(e.target.classList.item(1)) - 1
             if (e.target.innerText == '') {
                 if (goX) {
-                    e.target.innerText = 'X'
+                    e.target.querySelector('span').innerText = 'X'
+                    e.target.querySelector('span').classList.remove('is-paused');
                     goX = !goX
                     boardState[index] = 'X'
                 }
                 else {
-                    e.target.innerText = 'O'
+                    e.target.querySelector('span').innerText = 'O'
+                    e.target.querySelector('span').classList.remove('is-paused');
                     goX = !goX
                     boardState[index] = 'O'
                 }
