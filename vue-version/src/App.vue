@@ -1,9 +1,12 @@
-<template>
-  <div id="app">
+<template id="app">
+  <!-- doesn't work, want full background -->
+  <div>
     <Logo />
 
     <div class="board-wrapper">
       <Board which="1" />
+
+      <div class="hide play" onclick="location.reload();">Play again?</div>
     </div>
   </div>
 </template>
@@ -35,9 +38,34 @@ export default {
   margin: auto;
   height: fit-content;
   width: fit-content;
-  margin-top: 20vh;
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+.hide {
+  visibility: hidden;
+}
+
+.play {
+  margin-top: 30px;
+  background-color: #44c767;
+  border-radius: 28px;
+  border: 1px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: san-serif, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS";
+  font-size: 30px;
+  padding: 16px 31px;
+  text-decoration: none;
+}
+
+.play:hover {
+  background-color: #5cbf2a;
+}
+
+.play:active {
+  position: relative;
+  top: 1px;
 }
 </style>
