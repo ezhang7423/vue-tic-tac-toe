@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <Main msg="Welcome to Your Vue.js App" />
+    <Row which="1" />
   </div>
 </template>
 
 <script>
-import Main from "./components/main.vue";
+import Row from "./components/row.vue";
 
 export default {
   name: "app",
   components: {
-    Main
+    Row
   }
 };
 </script>
