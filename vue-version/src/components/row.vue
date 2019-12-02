@@ -19,13 +19,13 @@ export default {
   },
   computed: {
     first: function() {
-      return (2 * (parseInt(this.which) - 1) + 1).toString();
+      return (3 * parseInt(this.which) - 2).toString();
     },
     second: function() {
-      return (2 * (parseInt(this.which) - 1) + 2).toString();
+      return (3 * parseInt(this.which) - 1).toString();
     },
     third: function() {
-      return (2 * (parseInt(this.which) - 1) + 3).toString();
+      return (3 * parseInt(this.which)).toString();
     }
   }
 };
